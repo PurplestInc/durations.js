@@ -1,0 +1,24 @@
+{
+  "name": "durations.js",
+  "version": "1.0.0",
+  "description": "durations.js - animated durations library.",
+  "main": "durations.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PurplestInc/durations.js.git"
+  },
+  "keywords": [
+    "duration",
+    "countdown",
+    "countup",
+    "time",
+    "timer",
+    "coming soon"
+  ],
+  "author": "Rob Dukarski <rob@purplest.com> (https://github.com/RobDukarski)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PurplestInc/durations.js/issues"
+  },
+  "homepage": "https://durationsjs.com"
+}
