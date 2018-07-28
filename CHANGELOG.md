@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.0.3 - 07-28-2018
+
+### Changed
+
+* Updated the version number in `durations.js` to reflect the latest version on npm.
+* Updated [README.md](https://github.com/PurplestInc/durations.js/blob/master/README.md) to reflect the latest version on npm and updated the gzip size badge to reflect the new `durations.min.js` size based on CDN and fixed some typos.
+
 ## v1.0.2 - 07-28-2018
 
 ### Added
