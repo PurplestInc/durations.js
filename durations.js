@@ -1,8 +1,8 @@
 /**
- * @fileoverview duration.js duration timer library
+ * @fileoverview duration.js - animated durations library
  * @author Rob Dukarski <rob@purplest.com> (https://github.com/RobDukarski)
  * @copyright Purplest, Inc. 2018
- * @version 1.0.1
+ * @version 1.0.2
  */
 
 /**
@@ -26,13 +26,13 @@ const durations = (selector, start, end, stop) => {
     end: {
       afterText: end.afterText || '',
       beforeText: end.beforeText || '',
-      date: end.date || 'Dec 31, 9999 12:00:00',
+      date: end.date || 'Dec 31, 9999 12:00:00 (EST)',
       text: end.text || 'Event has passed.'
     },
     start: {
       afterText: start.afterText || '',
       beforeText: start.beforeText || '',
-      date: start.date || 'July 27, 2018 12:00:00',
+      date: start.date || 'July 29, 2018 12:00:00 (EST)',
       text: start.text || 'Coming Soon!'
     },
     stop: stop || true
@@ -40,15 +40,16 @@ const durations = (selector, start, end, stop) => {
 
 
   if (duration) {
-    let date = new Date(options.start.date).getTime();
+    let startDate = new Date(options.start.date).getTime();
+    let endDate = new Date(options.end.date).getTime();
     let timer = setInterval((timer) => {
       let now = new Date().getTime();
-      let	distance = date - now;
-      let	days = Math.floor(distance / (1000 * 60 * 60 * 24));			
-      let	hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      let	minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      let	seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      let	timeText = ['days', 'hours', 'minutes', 'seconds'];
+      let distance = endDate - now;
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));			
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      let timeText = ['days', 'hours', 'minutes', 'seconds'];
 
       if (days === 1) {
         timeText[0] = 'day';
@@ -67,12 +68,12 @@ const durations = (selector, start, end, stop) => {
       }
 
       for (let i = 0; i < elementCount; i++) {
-        if (now < date) {
+        if (now < startDate) {
           duration[i].innerText = options.start.text;
         } else if (distance > 0) {
           duration[i].innerText = options.start.beforeText + days + ' ' + timeText[0] + ', ' + hours + ' ' + timeText[1] + ', ' + minutes + ' ' + timeText[2] + ', and ' + seconds + ' ' + timeText[3] + options.start.afterText;
         } else if (distance < 0 && !stop) {
-          duration[i].innerText = options.start.beforeText + days + ' ' + timeText[0] + ', ' + hours + ' ' + timeText[1] + ', ' + minutes + ' ' + timeText[2] + ', and ' + seconds + ' ' + timeText[3] + options.start.afterText;
+          duration[i].innerText = options.end.beforeText + days + ' ' + timeText[0] + ', ' + hours + ' ' + timeText[1] + ', ' + minutes + ' ' + timeText[2] + ', and ' + seconds + ' ' + timeText[3] + options.end.afterText;
         } else {
           duration[i].innerText = options.end.text;
         }
@@ -86,5 +87,7 @@ const durations = (selector, start, end, stop) => {
         }
       }
     }, 1000);
+  } else {
+    console.log('No selector or DOM element was found.');
   }
 };
