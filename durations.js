@@ -2,7 +2,7 @@
  * @fileoverview duration.js - animated durations library
  * @author Rob Dukarski <rob@purplest.com> (https://github.com/RobDukarski)
  * @copyright Purplest, Inc. 2018
- * @version 1.0.3
+ * @version 1.0.4
  */
 
 /**
@@ -24,18 +24,18 @@ const durations = (selector, start, end, stop) => {
   let elementIterator = 0;
   let options = {
     end: {
-      afterText: end.afterText || '',
-      beforeText: end.beforeText || '',
-      date: end.date || 'Dec 31, 9999 12:00:00 (EST)',
-      text: end.text || 'Event has passed.'
+      afterText: (end.afterText !== undefined) ? end.afterText : '',
+      beforeText: (end.beforeText !== undefined) ? end.beforeText : '',
+      date: (end.date !== undefined) ? end.date : 'Dec 31, 9999 12:00:00 (EST)',
+      text: (end.text !== undefined) ? end.text : 'Event has passed.'
     },
     start: {
-      afterText: start.afterText || '',
-      beforeText: start.beforeText || '',
-      date: start.date || 'July 29, 2018 12:00:00 (EST)',
-      text: start.text || 'Coming Soon!'
+      afterText: (start.afterText !== undefined) ? start.afterText : '',
+      beforeText: (start.beforeText !== undefined) ? start.beforeText : '',
+      date: (start.date !== undefined) ? start.date : 'July 30, 2018 12:00:00 (EST)',
+      text: (start.text !== undefined) ? start.text : 'Coming Soon!'
     },
-    stop: stop || true
+    stop: (stop !== undefined && typeof stop === 'boolean') ? stop : true
   };
 
 
@@ -45,10 +45,10 @@ const durations = (selector, start, end, stop) => {
     let timer = setInterval((timer) => {
       let now = new Date().getTime();
       let distance = endDate - now;
-      let days = Math.floor(distance / (1000 * 60 * 60 * 24));			
-      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      let days = Math.abs(Math.floor(distance / (1000 * 60 * 60 * 24)));
+      let hours = Math.abs(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+      let minutes = Math.abs(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+      let seconds = Math.abs(Math.floor((distance % (1000 * 60)) / 1000));
       let timeText = ['days', 'hours', 'minutes', 'seconds'];
 
       if (days === 1) {
@@ -72,7 +72,7 @@ const durations = (selector, start, end, stop) => {
           duration[i].innerText = options.start.text;
         } else if (distance > 0) {
           duration[i].innerText = options.start.beforeText + days + ' ' + timeText[0] + ', ' + hours + ' ' + timeText[1] + ', ' + minutes + ' ' + timeText[2] + ', and ' + seconds + ' ' + timeText[3] + options.start.afterText;
-        } else if (distance < 0 && !stop) {
+        } else if (distance <= 0 && !stop) {
           duration[i].innerText = options.end.beforeText + days + ' ' + timeText[0] + ', ' + hours + ' ' + timeText[1] + ', ' + minutes + ' ' + timeText[2] + ', and ' + seconds + ' ' + timeText[3] + options.end.afterText;
         } else {
           duration[i].innerText = options.end.text;

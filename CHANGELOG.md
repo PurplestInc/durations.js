@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.0.4 - 07-30-2018
+
+### Changed
+
+* Fixed an issue with `durations.js` and `durations.min.js` to ensure user-supplied options are used and only positive values are shown for animated durations.
+* Updated the version number in `durations.js` to reflect the latest version on npm.
+* Updated [README.md](https://github.com/PurplestInc/durations.js/blob/master/README.md) to reflect the latest version on npm, altered the color of some badges, and added another feature.
+
 ## v1.0.3 - 07-28-2018
 
 ### Changed

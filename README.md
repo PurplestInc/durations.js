@@ -1,11 +1,12 @@
 durations.js - animated durations library.
 ============
 [![license](https://img.shields.io/badge/license-MIT-9752e7.svg)](https://github.com/PurplestInc/durations.js/blob/master/LICENSE)
-[![npm downloads](https://img.shields.io/npm/dt/durations.js.svg?colorB=9752e7)](https://www.npmjs.com/package/durations.js)
-[![npm version](https://img.shields.io/npm/v/durations.js.svg?colorB=9752e7)](https://www.npmjs.com/package/durations.js#installation)
-[![gzip size](https://img.shields.io/badge/gzip%20size-564%20B-9752e7.svg)](https://cdn.jsdelivr.net/npm/durations.js@1.0.3/durations.min.js?compression=gzip)
+[![npm downloads](https://img.shields.io/npm/dt/durations.js.svg?colorB=rgb(181%2C82%2C231))](https://www.npmjs.com/package/durations.js)
+[![npm version](https://img.shields.io/npm/v/durations.js.svg?colorB=rgb(181%2C82%2C231))](https://www.npmjs.com/package/durations.js#installation)
+[![gzip size](https://img.shields.io/badge/gzip%20size-564%20B-9752e7.svg)](https://cdn.jsdelivr.net/npm/durations.js@1.0.4/durations.min.js?compression=gzip)
 
-[durations.js](https://durationsjs.com) is a tiny [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.3/durations.min.js?compression=gzip) to help provide animated durations functionality for those that do not currently use another solution.
+
+[durations.js](https://durationsjs.com) is a tiny [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.4/durations.min.js?compression=gzip) to help provide animated durations functionality for those that do not currently use another solution.
 
 Table of Contents
 -----------------
@@ -23,9 +24,9 @@ Table of Contents
 Basic Info
 -----------------
 
-An animated durations [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.3/durations.min.js?compression=gzip) built to provide convenience for developers.
+An animated durations [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.4/durations.min.js?compression=gzip) built to provide convenience for developers.
 
-Visit the landing page at [durationsjs.com](https://durationsjs.com) to see a [demo](https://durationsjs.com) of the [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.3/durations.min.js?compression=gzip) in action!
+Visit the landing page at [durationsjs.com](https://durationsjs.com) to see a [demo](https://durationsjs.com) of the [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.4/durations.min.js?compression=gzip) in action!
 
 Features
 --------
@@ -35,6 +36,7 @@ Features
 * Allows a function to be called when duration has ended
 * Customizeable before start and after end text
 * Customizeable before duration and after duration text
+* Customizeable start and end dates, of course
 * Fully open source
 
 Getting Started
@@ -42,7 +44,7 @@ Getting Started
 
 ### Installation
 
-You can install the [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.3/durations.min.js?compression=gzip) via npm:
+You can install the [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.4/durations.min.js?compression=gzip) via npm:
 
 ```javascript
 npm i durations.js
@@ -53,9 +55,9 @@ or via CDN:
 
 ```html
 <!-- Source Version -->
-<script src="https://cdn.jsdelivr.net/npm/durations.js@1.0.3/durations.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/durations.js@1.0.4/durations.js"></script>
 <!-- Minified Version -->
-<script src="https://cdn.jsdelivr.net/npm/durations.js@1.0.3/durations.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/durations.js@1.0.4/durations.min.js"></script>
 ```
 
 ### Usage
