@@ -1,12 +1,12 @@
 durations.js - animated durations library.
 ============
 [![license](https://img.shields.io/badge/license-MIT-9752e7.svg)](https://github.com/PurplestInc/durations.js/blob/master/LICENSE)
-[![npm downloads](https://img.shields.io/npm/dt/durations.js.svg?colorB=rgb(181%2C82%2C231))](https://www.npmjs.com/package/durations.js)
-[![npm version](https://img.shields.io/npm/v/durations.js.svg?colorB=rgb(181%2C82%2C231))](https://www.npmjs.com/package/durations.js#installation)
-[![gzip size](https://img.shields.io/badge/gzip%20size-564%20B-9752e7.svg)](https://cdn.jsdelivr.net/npm/durations.js@1.0.4/durations.min.js?compression=gzip)
+[![npm downloads](https://img.shields.io/npm/dt/durations.js.svg?colorB=rgb(151%2C82%2C231))](https://www.npmjs.com/package/durations.js)
+[![npm version](https://img.shields.io/npm/v/durations.js.svg?colorB=rgb(151%2C82%2C231))](https://www.npmjs.com/package/durations.js#installation)
+[![gzip size](https://img.shields.io/badge/gzip%20size-614%20B-9752e7.svg)](https://cdn.jsdelivr.net/npm/durations.js@1.0.5/durations.min.js?compression=gzip)
 
 
-[durations.js](https://durationsjs.com) is a tiny [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.4/durations.min.js?compression=gzip) to help provide animated durations functionality for those that do not currently use another solution.
+[durations.js](https://durationsjs.com) is a tiny [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.5/durations.min.js?compression=gzip) to help provide animated durations functionality for those that do not currently use another solution.
 
 Table of Contents
 -----------------
@@ -24,16 +24,16 @@ Table of Contents
 Basic Info
 -----------------
 
-An animated durations [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.4/durations.min.js?compression=gzip) built to provide convenience for developers.
+An animated durations [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.5/durations.min.js?compression=gzip) built to provide convenience for developers.
 
-Visit the landing page at [durationsjs.com](https://durationsjs.com) to see a [demo](https://durationsjs.com) of the [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.4/durations.min.js?compression=gzip) in action!
+Visit the landing page at [durationsjs.com](https://durationsjs.com) to see a [demo](https://durationsjs.com) of the [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.5/durations.min.js?compression=gzip) in action!
 
 Features
 --------
 
 * Plug-and-play (unless you have other JavaScript that uses `durations()` already...)
 * Selector-based targeting
-* Allows a function to be called when duration has ended
+* Allows a function to be called when an animated duration has started and/or ended
 * Customizeable before start and after end text
 * Customizeable before duration and after duration text
 * Customizeable start and end dates, of course
@@ -44,7 +44,7 @@ Getting Started
 
 ### Installation
 
-You can install the [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.4/durations.min.js?compression=gzip) via npm:
+You can install the [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.5/durations.min.js?compression=gzip) via npm:
 
 ```javascript
 npm i durations.js
@@ -55,9 +55,9 @@ or via CDN:
 
 ```html
 <!-- Source Version -->
-<script src="https://cdn.jsdelivr.net/npm/durations.js@1.0.4/durations.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/durations.js@1.0.5/durations.js"></script>
 <!-- Minified Version -->
-<script src="https://cdn.jsdelivr.net/npm/durations.js@1.0.4/durations.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/durations.js@1.0.5/durations.min.js"></script>
 ```
 
 ### Usage
@@ -87,10 +87,12 @@ Documentation to be added with the next npm version.
  * Animates a duration change among two dates based on the current time.
  * 
  * @param {String} selector - Element(s) to add the duration message
- * @param {Object} start - Object of start date, before text, after text, and
- *                         text to display if before the start date
- * @param {Object} end - Object of end date, before text, after text, and text
- *                       to display when past the end date
+ * @param {Object} start - Object of start date, before text, after text, text
+ *                         to display if before the start date, and a callback
+ *                         function to execute when animated duration starts
+ * @param {Object} end - Object of end date, before text, after text, text to
+ *                       display when past the end date, and a callback function
+ *                       to execute when the end date has been passed
  * @param {Boolean} stop - Whether duration should stop or not, if not then it
  *                         will continue counting without ever displaying the
  *                         end text
@@ -101,11 +103,14 @@ Documentation to be added with the next npm version.
 
 // start object can be as follows but should at least include a start date.
 // Defautls to displaying the duration and if before the start date of 
-// July 29, 2018 12:00:00 (EST) it will display "Coming Soon!".
+// July 30, 2018 12:00:00 (EST) it will display "Coming Soon!".
 
 {
   afterText: ' until the event occurs.',
   beforeText: 'There are ',
+  callback: () => {
+    return navigator.sendBecon('/api/log', { start: true });
+  },
   date: 'July 27, 2018 12:00:00 (EST)',
   text: 'The new event is coming soon!!'
 }
@@ -117,6 +122,9 @@ Documentation to be added with the next npm version.
 {
   afterText: ' since the event occurred.',
   beforeText: 'There have been ',
+  callback: () => {
+    return navigator.sendBecon('/api/log', { end: true });
+  },
   date: 'July 28, 2018 12:00:00 (EST)',
   text: 'The event has ended.'
 }
@@ -132,11 +140,17 @@ true
 durations('.js-duration',{
   afterText: ' until the event occurs.',
   beforeText: 'There are ',
+  callback: () => {
+    return navigator.sendBecon('/api/log', { start: true });
+  },
   date: 'July 27, 2018 12:00:00 (EST)',
   text: 'The new event is coming soon!!'
 },{
   afterText: ' since the event occurred.',
   beforeText: 'There have been ',
+  callback: () => {
+    return navigator.sendBecon('/api/log', { end: true });
+  },
   date: 'July 28, 2018 12:00:00 (EST)',
   text: 'The event has ended.'
 }, true);

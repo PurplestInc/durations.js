@@ -2,17 +2,19 @@
  * @fileoverview duration.js - animated durations library
  * @author Rob Dukarski <rob@purplest.com> (https://github.com/RobDukarski)
  * @copyright Purplest, Inc. 2018
- * @version 1.0.4
+ * @version 1.0.5
  */
 
 /**
  * Animates a duration change among two dates based on the current time.
  * 
  * @param {String} selector - Element(s) to add the duration message
- * @param {Object} start - Object of start date, before text, after text, and
- *                         text to display if before the start date
- * @param {Object} end - Object of end date, before text, after text, and text
- *                       to display when past the end date
+ * @param {Object} start - Object of start date, before text, after text, text
+ *                         to display if before the start date, and a callback
+ *                         function to execute when animated duration starts
+ * @param {Object} end - Object of end date, before text, after text, text to
+ *                       display when past the end date, and a callback function
+ *                       to execute when the end date has been passed
  * @param {Boolean} stop - Whether duration should stop or not, if not then it
  *                         will continue counting without ever displaying the
  *                         end text
@@ -26,12 +28,14 @@ const durations = (selector, start, end, stop) => {
     end: {
       afterText: (end.afterText !== undefined) ? end.afterText : '',
       beforeText: (end.beforeText !== undefined) ? end.beforeText : '',
+      callback: (end.callback !== undefined && typeof end.callback === 'function') ? end.callback : undefined,
       date: (end.date !== undefined) ? end.date : 'Dec 31, 9999 12:00:00 (EST)',
       text: (end.text !== undefined) ? end.text : 'Event has passed.'
     },
     start: {
       afterText: (start.afterText !== undefined) ? start.afterText : '',
       beforeText: (start.beforeText !== undefined) ? start.beforeText : '',
+      callback: (start.callback !== undefined && typeof start.callback === 'function') ? start.callback : undefined,
       date: (start.date !== undefined) ? start.date : 'July 30, 2018 12:00:00 (EST)',
       text: (start.text !== undefined) ? start.text : 'Coming Soon!'
     },
@@ -40,8 +44,10 @@ const durations = (selector, start, end, stop) => {
 
 
   if (duration) {
-    let startDate = new Date(options.start.date).getTime();
     let endDate = new Date(options.end.date).getTime();
+    let hasEndCallbackBeenExecuted = false;
+    let hasStartCallbackBeenExecuted = false;
+    let startDate = new Date(options.start.date).getTime();
     let timer = setInterval((timer) => {
       let now = new Date().getTime();
       let distance = endDate - now;
@@ -65,6 +71,20 @@ const durations = (selector, start, end, stop) => {
 
       if (seconds === 1) {
         timeText[3] = 'second';
+      }
+
+      if (now > startDate && !hasStartCallbackBeenExecuted) {
+        if (options.start.callback !== undefined) {
+          hasStartCallbackBeenExecuted = true;
+          options.start.callback();
+        }
+      }
+
+      if (now > endDate && !hasEndCallbackBeenExecuted) {
+        if (options.end.callback !== undefined) {
+          hasEndCallbackBeenExecuted = true;
+          options.end.callback();
+        }
       }
 
       for (let i = 0; i < elementCount; i++) {
