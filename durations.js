@@ -1,8 +1,8 @@
 /**
- * @fileoverview duration.js - animated durations library
+ * @fileoverview durations.js - animated durations library
  * @author Rob Dukarski <rob@purplest.com> (https://github.com/RobDukarski)
  * @copyright Purplest, Inc. 2018
- * @version 1.0.7
+ * @version 1.0.8
  */
 
 /**

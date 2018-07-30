@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.0.8 - 07-30-2018
+
+### Changed
+
+* Fixed a typo in `durations.js`.
+* Updated the version number in `durations.js` to reflect the latest version on npm.
+* Updated [README.md](https://github.com/PurplestInc/durations.js/blob/master/README.md) to reflect the latest version on npm.
+
 ## v1.0.7 - 07-30-2018
 
 ### Changed
