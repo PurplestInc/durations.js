@@ -1,10 +1,18 @@
 # Changelog
 
+## v1.0.6 - 07-30-2018
+
+### Changed
+
+* Fixed typos in this changelog.
+* Updated the version number in `durations.js` to reflect the latest version on npm.
+* Updated [README.md](https://github.com/PurplestInc/durations.js/blob/master/README.md) to reflect the latest version on npm and updated the gzip size badge to reflect the new `durations.min.js` size based on CDN.
+
 ## v1.0.5 - 07-30-2018
 
 ### Changed
 
-* Fixed an issue with `durations.js` and `durations.min.js` to where the callback functionality was not present.
+* Fixed an issue with `durations.js` and `durations.min.js` where the callback functionality was not present by adding that functionality.
 * Updated the version number in `durations.js` to reflect the latest version on npm.
 * Updated [README.md](https://github.com/PurplestInc/durations.js/blob/master/README.md) to reflect the latest version on npm, altered the color of some badges, fixed some typos.
 
