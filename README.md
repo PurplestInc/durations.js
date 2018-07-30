@@ -3,10 +3,10 @@ durations.js - animated durations library.
 [![license](https://img.shields.io/badge/license-MIT-9752e7.svg)](https://github.com/PurplestInc/durations.js/blob/master/LICENSE)
 [![npm downloads](https://img.shields.io/npm/dt/durations.js.svg?colorB=rgb(151%2C82%2C231))](https://www.npmjs.com/package/durations.js)
 [![npm version](https://img.shields.io/npm/v/durations.js.svg?colorB=rgb(151%2C82%2C231))](https://www.npmjs.com/package/durations.js#installation)
-[![gzip size](https://img.shields.io/badge/gzip%20size-698%20B-9752e7.svg)](https://cdn.jsdelivr.net/npm/durations.js@1.0.6/durations.min.js?compression=gzip)
+[![gzip size](https://img.shields.io/badge/gzip%20size-698%20B-9752e7.svg)](https://cdn.jsdelivr.net/npm/durations.js@1.0.7/durations.min.js?compression=gzip)
 
 
-[durations.js](https://durationsjs.com) is a tiny [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.6/durations.min.js?compression=gzip) to help provide animated durations functionality for those that do not currently use another solution.
+[durations.js](https://durationsjs.com) is a tiny [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.7/durations.min.js?compression=gzip) to help provide animated durations functionality for those that do not currently use another solution.
 
 Table of Contents
 -----------------
@@ -24,9 +24,9 @@ Table of Contents
 Basic Info
 -----------------
 
-An animated durations [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.6/durations.min.js?compression=gzip) built to provide convenience for developers.
+An animated durations [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.7/durations.min.js?compression=gzip) built to provide convenience for developers.
 
-Visit the landing page at [durationsjs.com](https://durationsjs.com) to see a [demo](https://durationsjs.com) of the [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.6/durations.min.js?compression=gzip) in action!
+Visit the landing page at [durationsjs.com](https://durationsjs.com) to see a [demo](https://durationsjs.com) of the [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.7/durations.min.js?compression=gzip) in action!
 
 Features
 --------
@@ -44,7 +44,7 @@ Getting Started
 
 ### Installation
 
-You can install the [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.6/durations.min.js?compression=gzip) via npm:
+You can install the [library](https://cdn.jsdelivr.net/npm/durations.js@1.0.7/durations.min.js?compression=gzip) via npm:
 
 ```javascript
 npm i durations.js
@@ -55,9 +55,9 @@ or via CDN:
 
 ```html
 <!-- Source Version -->
-<script src="https://cdn.jsdelivr.net/npm/durations.js@1.0.6/durations.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/durations.js@1.0.7/durations.js"></script>
 <!-- Minified Version -->
-<script src="https://cdn.jsdelivr.net/npm/durations.js@1.0.6/durations.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/durations.js@1.0.7/durations.min.js"></script>
 ```
 
 ### Usage
@@ -109,7 +109,7 @@ Documentation to be added with the next npm version.
   afterText: ' until the event occurs.',
   beforeText: 'There are ',
   callback: () => {
-    return navigator.sendBecon('/api/log', { start: true });
+    return navigator.sendBeacon('/api/log', { start: true });
   },
   date: 'July 27, 2018 12:00:00 (EST)',
   text: 'The new event is coming soon!!'
@@ -123,7 +123,7 @@ Documentation to be added with the next npm version.
   afterText: ' since the event occurred.',
   beforeText: 'There have been ',
   callback: () => {
-    return navigator.sendBecon('/api/log', { end: true });
+    return navigator.sendBeacon('/api/log', { end: true });
   },
   date: 'July 28, 2018 12:00:00 (EST)',
   text: 'The event has ended.'
@@ -141,7 +141,7 @@ durations('.js-duration',{
   afterText: ' until the event occurs.',
   beforeText: 'There are ',
   callback: () => {
-    return navigator.sendBecon('/api/log', { start: true });
+    return navigator.sendBeacon('/api/log', { start: true });
   },
   date: 'July 27, 2018 12:00:00 (EST)',
   text: 'The new event is coming soon!!'
@@ -149,7 +149,7 @@ durations('.js-duration',{
   afterText: ' since the event occurred.',
   beforeText: 'There have been ',
   callback: () => {
-    return navigator.sendBecon('/api/log', { end: true });
+    return navigator.sendBeacon('/api/log', { end: true });
   },
   date: 'July 28, 2018 12:00:00 (EST)',
   text: 'The event has ended.'
