@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/PurplestInc/durations.js/issues"
   },
-  "homepage": "https://durationsjs.com"
+  "homepage": "https://durationsjs.com",
+  "dependencies": {}
 }

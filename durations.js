@@ -2,8 +2,10 @@
  * @fileoverview durations.js - animated durations library
  * @author Rob Dukarski <rob@purplest.com> (https://github.com/RobDukarski)
  * @copyright Purplest, Inc. 2018
- * @version 1.0.8
+ * @version 1.0.9
  */
+
+'use strict';
 
 /**
  * Animates a duration change among two dates based on the current time.
@@ -56,6 +58,17 @@ const durations = (selector, start, end, stop) => {
       let minutes = Math.abs(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
       let seconds = Math.abs(Math.floor((distance % (1000 * 60)) / 1000));
       let timeText = ['days', 'hours', 'minutes', 'seconds'];
+
+      if (Math.floor(distance / (1000 * 60 * 60 * 24)) === 0) {
+        days = 0;
+      }
+
+      if (distance <= 0) {
+        days -= 1;
+        hours -= 1;
+        minutes -= 1;
+        seconds -= 1;
+      }
 
       if (days === 1) {
         timeText[0] = 'day';
@@ -111,3 +124,7 @@ const durations = (selector, start, end, stop) => {
     console.log('No selector or DOM element was found.');
   }
 };
+
+try {
+  module.exports = exports = durations;
+} catch (e) {}

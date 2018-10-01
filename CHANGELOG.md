@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.0.9 - 10-01-2018
+
+### Changed
+
+* Fixed countup calculation in `durations.js`.
+* Updated the version number in `durations.js` to reflect the latest version on npm.
+* Updated [README.md](https://github.com/PurplestInc/durations.js/blob/master/README.md) to reflect the latest version on npm and updated the gzip size badge to reflect the new `durations.min.js` size.
+
 ## v1.0.8 - 07-30-2018
 
 ### Changed
